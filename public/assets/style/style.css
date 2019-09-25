@@ -1,0 +1,144 @@
+body {
+  margin: 0%;
+  padding: 0%;
+  text-transform: uppercase;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  height: 10vh;
+}
+
+#dashboard{
+  height: 100%;
+}
+
+.header {
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#main-title {
+  margin-top: 0px;
+  font-size: 60px;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
+
+#title-1 {
+  margin-top: 0px;
+  font-size: 35px;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
+
+#title-2 {
+  margin-top: 0px;
+  font-size: 25px;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
+
+.info-section {
+  height: 65%;
+  display: block;
+  width: 100%;
+  justify-content:space-around;
+  align-items: center;
+}
+
+#info-1,
+#info-2,
+#info-3 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-weight: bold;
+  color: white;
+  
+}
+
+#info-1 {
+  background-image: url("../images/marketproducts.jpg");
+  background-position: center;
+  background-size: cover
+}
+
+#info-2 {
+  background-image: url("../images/shopping.jpg");
+  background-position: center;
+  background-size: cover
+}
+
+#info-3 {
+  background-image: url("../images/customer.jpg");
+  background-position: center;
+  background-size: cover
+}
+
+.flip-card {
+  background-color:transparent;
+  width: 33.3333%;
+  height: 52vh;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+
+
+.flip-card-back {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(180deg);
+  background-color:black;
+}
+
+.search-container input {
+  width: 500px;
+  padding: 6px 10px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+.search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}

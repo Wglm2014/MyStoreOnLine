@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <title>Fast And Fresh</title>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="/">F n F</a>
+    </nav>
+    <!--end Navbar-->
+
+    <!--Register form-->
+    <div class="card bg-light"></div>
+    <article class="card-body mx-auto" style="max-width: 600px;">
+        <h4 class="card-title mt-3 text-center">Create Account</h4>
+        <p class="text-center">Enter Farmer/Hey Market Place</p>
+        <form>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </div>
+                <textarea placeholder="Market Name or Brand" class="form-control" rows="2" id="brand"
+                    required></textarea>
+            </div>
+            <!--form group-->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </span>
+                </div>
+                <input name="address" id="address" class="form-control" placeholder="Address" type="text" required />
+            </div>
+            <!--form group-->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-map-marker-alt"></i></span>
+                </div>
+                <input name="city" id="city" class="form-control" placeholder="City" type="text" required />
+            </div>
+            <!--form group-->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                </div>
+                <input name="state" id="state" class="form-control" placeholder="State" type="text" required />
+            </div>
+            <!--form group-->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                </div>
+                <input name="zip" id="zip" class="form-control" placeholder="Zip code" type="text" required />
+            </div>
+            <!--form group-->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+                <input name="date-open" id="date-open" class="form-control" placeholder="Opening Date" type="date"
+                    required />
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </div>
+                <input name="date-close" id="date-close" class="form-control" placeholder="Closing Date" type="date" />
+            </div>
+
+            <!--form group-->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-clock"></i>
+                    </span>
+                </div>
+                <input name="time-open" id="time-open" class="form-control" placeholder="Opening Time" type="time"
+                    required />
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-clock"></i>
+                    </span>
+                </div>
+                <input name="time-close" id="time-close" class="form-control" placeholder="Closing Time" type="time"
+                    required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" id="save-market">
+                    Save Market
+                </button>
+            </div>
+            <!--form group-->
+        </form>
+    </article>
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle">Field Validation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h1 id="modal-error"></h1>
+                </div>
+                <div class="modal-footer">
+                    <!-- Camera trigger -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        OK
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/marketsApp.js"></script>
+</body>
+
+</html>

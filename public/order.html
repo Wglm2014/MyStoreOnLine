@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!--Fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <!-- Link to your main style sheet-->
+  <link rel="stylesheet" href="assets/style/order.css" />
+
+  <title>Check out</title>
+</head>
+
+<body>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="index.html">F n F</a>
+  </nav>
+  <!--end Navbar-->
+  <br />
+  <div class="row">
+    <div class="col-6">
+      <div id="order-detail" class="card mx-auto" style="width: 40rem;">
+        <div class="card-body ml-3">
+          <h2 class="card-title">Order Detail</h2>
+          <div id="product-section"></div>
+          <div class="row product">
+            <div class="col-6">
+              <h5 class="card-text">Taxes</h5>
+            </div>
+            <div class="col-6" id="taxes"></div>
+          </div>
+          <div class="row product">
+            <div class="col-6">
+              <h5 class="card-text">Packing fee</h5>
+            </div>
+            <div class="col-6" id="pack-fee"></div>
+          </div>
+          <div class="row product">
+            <div class="col-6">
+              <h3 class="card-text">Total</h3>
+            </div>
+            <div class="col-6" id="total-price"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div id="payment" class="card mx-auto" style="width: 40rem;">
+        <div class="card-body">
+          <h2 class="card-title">Payment</h2>
+        </div>
+        <br />
+        <br />
+        <div class="card-body">
+          <div class="row">
+            <h5 class="ml-3">Payment method 1</h5>
+            <div class="custom-control custom-radio ml-auto">
+              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" />
+              <label class="custom-control-label" for="customRadio1"></label>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <h5 class="ml-3">Payment method 2</h5>
+            <div class="custom-control custom-radio ml-auto">
+              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" />
+              <label class="custom-control-label" for="customRadio2"></label>
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="row">
+            <button class="btn btn-primary mx-auto">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--JQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Bootstrap js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <!-- Reference to your JavaScript file -->
+  <script src="assets/js/order.js"></script>
+</body>
+
+</html>
