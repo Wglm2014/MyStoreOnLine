@@ -10,7 +10,7 @@ require("./config/passport");
 //console.log(process.env.mongoURI);
 
 
-mongoose.connect(process.env.mongoURI, { useNewUrlParses: true, useUnifiedTopology: true });
+mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const app = express();
