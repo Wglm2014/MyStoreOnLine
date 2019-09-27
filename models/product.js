@@ -3,24 +3,23 @@ const mongoose = require("mongoose");
 const productSchema = mongoose.Schema({
     name: {
         type: DataTypes.STRING,
-        allowNull: false
+        requiere: false
     },
     price: {
         type: DataTypes.DOUBLE,
-        allowNull: false
+        requiere: false
     },
     price_per: {
         type: DataTypes.STRING,
-        allowNull: false,
+        requiere: false,
     },
     picture_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        requiere: false,
     },
     picture_url: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: { isUrl: true }
+        requiere: false
     }
 });
 

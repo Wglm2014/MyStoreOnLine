@@ -1,7 +1,7 @@
 <!-- Modal for login-->
 <div class="modal fade bd-example-modal-lg" id="Modal-login" tabindex="-1" role="dialog" aria-labelledby="ModalTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h1 class="modal-title" id="ModalTitle"><i class="fa fa-user" aria-hidden="true"></i> Login</h1>
@@ -9,15 +9,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
             <div class="modal-body fnf-bg-green">
-                <div class="container-fluid">
+                <div class="containers">
                     <main id="modal-login">
                         <div class="row">
                             <div class="col-12">
                                 <form id="login-form">
                                     <div class="form-group">
-                                        <label for="email">Enter your email</label>
+                                        <label for="email">Please enter your email</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
@@ -29,7 +28,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Enter your password</label>
+                                        <label for="password">Please enter your password</label>
                                         <div class="input-group">
 
                                             <div class="input-group-prepend">
@@ -39,14 +38,18 @@
                                                 placeholder="enter password">
                                         </div>
                                     </div>
+                                    <button class="btn btn-success form-control" id="login-button"
+                                        type="submit">Login</button>
+
                                 </form>
                             </div>
                     </main>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-success" id="login-button" type="submit">Login</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <div class="modal-footer fnf-bg-green">
+                <a class="btn btn-dark form-control" href="/auth/google">
+                    SignUp with <img class="img-fluid" src="assets/images/googleg.png">oogle
+                </a>
             </div>
         </div>
     </div>
@@ -77,7 +80,7 @@
                     </main>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer fnf-bbg-green">
                 <button class="btn btn-info" id="login-button" type="submit">Login</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
             </div>

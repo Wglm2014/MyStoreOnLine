@@ -29,7 +29,6 @@ $("#markets-list").on("click", ".market-link", function (event) {
 // 
 $("#login-customer").on("click", function (event) {
     event.preventDefault();
-    console.log("here here");
     $("#Modal-login").modal("toggle");
 })
 //substitu for login-shopper

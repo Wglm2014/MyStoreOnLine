@@ -3,9 +3,7 @@ const mongoose = require("mongoose");
 const farmerSchema = mongoose.Schema({
     idNationalMarket: {
         type: String,
-        require: false,
-        primaryKey: true,
-        autoincrement: false
+        require: false
     },
     products: {
         type: String,
