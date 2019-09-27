@@ -2,6 +2,14 @@
 const router = require("express").Router();
 //const db = require("../models");
 const passport = require("passport");
+
+//local authenticate
+router.post("/api/login", passport.authenticate("local"), (req, res) => {
+    //res.json({ success: true, user: req.user.email });
+    //render dashboard
+    res.redirect("/");
+});
+
 // google auth
 router.get(
     '/auth/google',
@@ -14,6 +22,7 @@ router.get(
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
+        //switch to render dashboard
         res.redirect('/');
     }
 );

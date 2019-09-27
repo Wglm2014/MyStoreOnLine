@@ -1,4 +1,3 @@
-let destination = "";
 $(document).ready(function () {
     marketList = $("#markets-list");
 
@@ -15,37 +14,6 @@ $(document).ready(function () {
     });
 
 });
-// substitute for login-customer
-$("#login-customer").on("click", function (event) {
-    destination = "/customerShop";
-    event.preventDefault();
-    $("#Modal-login").modal("toggle");
-})
-//substitu for login-shopper
-$("#login-shopper").on("click", function (event) {
-    destination = "/product-farmer";
-    event.preventDefault();
-    $("#Modal-login").modal("toggle");
-})
-$("#login-button").on("click", function () {
-    const email = $("#email").val();
-    const password = $("#password").val();
-    const user = { email, password };
-    $.post("/api/login", user, function (userResult) {
-        console.log("back");
-        console.log(userResult.success);
-        if (userResult) {
-            $("#email").val("");
-            $("#password").val("");
-            $("Modal-login").modal("hide");
-            window.location.href = destination;
-        }
-        else {
-            console.log("user not found");
-        }
-    });
-});
-
 $("#markets-list").on("click", ".market-link", function (event) {
     event.preventDefault();
     $.get("/api/isLoggedin", function (userLogin) {
@@ -56,3 +24,33 @@ $("#markets-list").on("click", ".market-link", function (event) {
         }
     });
 });
+
+
+// 
+$("#login-customer").on("click", function (event) {
+    event.preventDefault();
+    console.log("here here");
+    $("#Modal-login").modal("toggle");
+})
+//substitu for login-shopper
+$("#login-shopper").on("click", function (event) {
+    event.preventDefault();
+    $("#Modal-login").modal("toggle");
+})
+$("#login-button").on("click", function () {
+    const email = $("#email").val();
+    const password = $("#password").val();
+    const user = { email, password };
+    $.get("/api/login", user, function (userResult) {
+        if (userResult) {
+            $("#email").val("");
+            $("#password").val("");
+            $("Modal-login").modal("hide");
+        }
+        else {
+            // call modal error
+            console.log("user not found");
+        }
+    });
+});
+
