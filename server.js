@@ -8,9 +8,9 @@ require("dotenv").config();
 require("./models/users");
 require("./config/passport");
 //console.log(process.env.mongoURI);
-
-
+//const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fnf_db";
 mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const app = express();
@@ -38,14 +38,15 @@ const apiaAuthRoute = require("./routes/apiAuthRoutes");
 ////const apiPostRoutes = require("./routes/apiPostRoutes");
 //const apiProductImages = require("./routes/apiProductImages");
 //const apiGetRoutes = require("./routes/apiGetRoutes");
-const htmlRoutes = require("./routes/htmlRoutes");
+//const htmlRoutes = require("./routes/htmlRoutes");
 //app.use(apiPostRoutes);
 //app.use(apiProductImages);
 //app.use(apiGetRoutes);
 //app.use("./routes/apiPutRoutes");
 //app.use("./routes/apiDeleteRoutes");
-app.use(htmlRoutes);
+
 app.use(apiaAuthRoute);
+//app.use(htmlRoutes);
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
 });

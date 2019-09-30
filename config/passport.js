@@ -29,7 +29,7 @@ passport.use(
     async (accessToken, refeshToken, profile, done) => {
       //console.log(accessToken);
       //console.log(refeshToken);
-      //console.log(profile);
+      console.log(profile);
       //console.log(done);
       try {
         const existingUser = await User.findOne({ googleId: profile.id });
@@ -39,10 +39,11 @@ passport.use(
         try {
           const user = await new User({
             googleId: profile.id,
-            name: profile._json.given_name,
+            first_name :profile._json.given_name,
             last_name: profile._json.family_name,
-            foto: profile._json.foto,
-            email: profile._json.email
+            foto: profile._json.picture,
+            email: profile._json.email,
+            account_status: true
           }).save();
           done(null, user);
         } catch (err) {
@@ -64,11 +65,7 @@ passport.use(new LocalStrategy(
   },
   function (email, password, done) {
     // When a user tries to sign in this code runs
-    db.User.findOne({
-      where: {
-        email: email
-      }
-    }).then(function (dbUser) {
+    User.find({email: email}).then(function (dbUser) {
       // If there's no user with the given email
       if (!dbUser) {
         return done(null, false, {

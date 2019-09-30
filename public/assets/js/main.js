@@ -2,7 +2,6 @@ $(document).ready(function () {
     marketList = $("#markets-list");
 
     $.get("/api/markets", function (marketData) {
-
         marketData.forEach(element => {
             marketInfo = `${element.address}, ${element.schedule}`;
             ///client-markets/${element.id}
@@ -25,17 +24,12 @@ $("#markets-list").on("click", ".market-link", function (event) {
     });
 });
 
-
 // 
 $("#login-customer").on("click", function (event) {
     event.preventDefault();
     $("#Modal-login").modal("toggle");
 })
-//substitu for login-shopper
-$("#login-shopper").on("click", function (event) {
-    event.preventDefault();
-    $("#Modal-login").modal("toggle");
-})
+
 $("#login-button").on("click", function () {
     const email = $("#email").val();
     const password = $("#password").val();

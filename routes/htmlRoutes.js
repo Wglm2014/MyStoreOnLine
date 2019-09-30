@@ -1,12 +1,21 @@
 
 const router = require("express").Router();
-
-router.get("/", (req, res) => { res.render("index") });
-/*const isAuthenticated = require("../config/middleware/isAuthenticated");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 
 
-router.get("/farmer-account", (req, res) => {
+router.get("/", (req, res) => { 
+    res.render("index") 
+});
+
+router.get("/dashboard", isAuthenticated,(req, res) => {
+     res.render("dashboard") 
+    });
+
+
+
+
+/*router.get("/farmer-account", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/farmerRegister.html"));
 });
 router.get("/shopper-account", (req, res) => {

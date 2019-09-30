@@ -6,24 +6,54 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    name: {
+    email: {
         type: String,
-        required: true
+        require: true,
+    },
+    password: {
+        type: String,
+        require: true
+    },
+    first_name: {
+        type: String,
+        require: true
     },
     last_name: {
         type: String,
-        required: true
+        require: true
     },
-    provider: {
-        type: String,
-        required: false
+    foto:{
+        type:String,
+        require:false
     },
-    foto: {
+    address: {
         type: String,
+        require: true
     },
-    email: {
+    city: {
         type: String,
-        required: true
+        require: true
+    },
+    zip: {
+        type: String,
+        require: true,
+    },
+    state: {
+        type: String,
+        require: true
+    },
+    telephone: {
+        type: String,
+        require: true,
+    },
+    telephone_other: {
+        type: String,
+    }
+    ,
+    account_status: {
+        type: Boolean,
+        require: true,
+        default: true
     }
 });
 mongoose.model("User", userSchema);
