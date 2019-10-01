@@ -38,7 +38,7 @@ const apiaAuthRoute = require("./routes/apiAuthRoutes");
 ////const apiPostRoutes = require("./routes/apiPostRoutes");
 //const apiProductImages = require("./routes/apiProductImages");
 //const apiGetRoutes = require("./routes/apiGetRoutes");
-//const htmlRoutes = require("./routes/htmlRoutes");
+const htmlRoutes = require("./routes/htmlRoutes");
 //app.use(apiPostRoutes);
 //app.use(apiProductImages);
 //app.use(apiGetRoutes);
@@ -46,7 +46,7 @@ const apiaAuthRoute = require("./routes/apiAuthRoutes");
 //app.use("./routes/apiDeleteRoutes");
 
 app.use(apiaAuthRoute);
-//app.use(htmlRoutes);
+app.use(htmlRoutes);
 app.listen(PORT, function () {
     console.log("App listening on PORT: " + PORT);
 });

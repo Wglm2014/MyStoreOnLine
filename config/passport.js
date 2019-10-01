@@ -29,7 +29,7 @@ passport.use(
     async (accessToken, refeshToken, profile, done) => {
       //console.log(accessToken);
       //console.log(refeshToken);
-      console.log(profile);
+      // console.log(profile);
       //console.log(done);
       try {
         const existingUser = await User.findOne({ googleId: profile.id });
@@ -39,11 +39,19 @@ passport.use(
         try {
           const user = await new User({
             googleId: profile.id,
-            first_name :profile._json.given_name,
+            first_name: profile._json.given_name,
             last_name: profile._json.family_name,
             foto: profile._json.picture,
             email: profile._json.email,
-            account_status: true
+            account_status: true,
+            address: "",
+            city: "",
+            zip: "",
+            state: "",
+            telephone: "",
+            telephone_other: "",
+            account_status: true,
+            account_type: "google"
           }).save();
           done(null, user);
         } catch (err) {
@@ -63,23 +71,23 @@ passport.use(new LocalStrategy(
   {
     usernameField: "email"
   },
-  function (email, password, done) {
+  async (email, password, done) => {
     // When a user tries to sign in this code runs
-    User.find({email: email}).then(function (dbUser) {
-      // If there's no user with the given email
-      if (!dbUser) {
-        return done(null, false, {
-          message: "Incorrect email."
-        });
-      }
-      // If there is a user with the given email, but the password the user gives us is incorrect
-      else if (!dbUser.validPassword(password)) {
-        return done(null, false, {
-          message: "Incorrect password."
-        });
-      }
-      // If none of the above, return the user
-      return done(null, dbUser);
-    });
+    const dbUser = User.findOne({ email: email });
+    // If there's no user with the given email
+    if (!dbUser) {
+      return done(null, false, {
+        message: "Incorrect email."
+      });
+    }
+    // If there is a user with the given email, but the password the user gives us is incorrect
+    else if (!dbUser.validPassword(password)) {
+      return done(null, false, {
+        message: "Incorrect password."
+      });
+    }
+    // If none of the above, return the user
+    return done(null, dbUser);
+
   }
 ));

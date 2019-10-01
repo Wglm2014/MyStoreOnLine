@@ -4,13 +4,13 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 
 
-router.get("/", (req, res) => { 
-    res.render("index") 
+router.get("/", (req, res) => {
+    res.render("index")
 });
 
-router.get("/dashboard", isAuthenticated,(req, res) => {
-     res.render("dashboard") 
-    });
+router.get("/dashboard", isAuthenticated, (req, res) => {
+    res.render("dashboard", req.user.first_name)
+});
 
 
 

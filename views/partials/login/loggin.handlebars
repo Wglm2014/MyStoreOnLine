@@ -16,73 +16,45 @@
                             <div class="col-12">
                                 <form id="login-form">
                                     <div class="form-group">
-                                        <label for="email">Please enter your email</label>
+                                        <label for="login-email">Please enter your email</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
                                                     <i class="fa fa-envelope"></i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" id="email" name="email"
-                                                placeholder="email@domain.com">
+                                            <input type="email" class="form-control" id="login-email" name="login-email"
+                                                placeholder="email@domain.com" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Please enter your password</label>
+                                        <label for="login-password">Please enter your password</label>
                                         <div class="input-group">
 
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                             </div>
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                placeholder="enter password">
+                                            <input type="password" class="form-control" id="login-password"
+                                                name="login-password" placeholder="enter password" required>
                                         </div>
                                     </div>
-                                    <button class="btn btn-success form-control" id="login-button"
-                                        type="submit">Login</button>
+                                    <button class="btn btn-success form-control" id="login-button" type="submit">Sign
+                                        in</button>
+
+                                    <p class="text-center"> Or <a class="create-account" href="#">
+                                            Create Account
+                                        </a></p>
 
                                 </form>
                             </div>
                     </main>
+
                 </div>
             </div>
             <div class="modal-footer fnf-bg-green">
                 <a class="btn btn-dark form-control" href="/auth/google">
                     SignIn with <img class="img-fluid" src="assets/images/googleg.png">oogle
                 </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Error Loggin-->
-<div class="modal fade bd-example-modal-lg" id="Modal-message-login" tabindex="-1" role="dialog"
-    aria-labelledby="ModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title" id="ModalTitle">login</h1>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <main id="modal-login">
-                        <div class="row">
-                            <div class="col-12">
-
-                                <div class="form-group">
-                                    <h1>Please Loggin or Create Account</h1>
-                                </div>
-
-                            </div>
-                    </main>
-                </div>
-            </div>
-            <div class="modal-footer fnf-bbg-green">
-                <button class="btn btn-info" id="login-button" type="submit">Login</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
             </div>
         </div>
     </div>

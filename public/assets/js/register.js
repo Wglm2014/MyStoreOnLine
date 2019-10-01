@@ -1,3 +1,11 @@
+/* 
+  address: "$("#address").val()",
+    city: $("#city").val(),
+    zip: $("#zip-code").val(),
+    state: $("#state").val(),
+    telephone: $("#phone-number").val(),
+    telephone_other: $("#phone-number-other").val(),*/
+
 $("#add").on("click", function (event) {
   event.preventDefault();
   const newCustomerAccount = {
@@ -5,23 +13,18 @@ $("#add").on("click", function (event) {
     password: $("#password").val(),
     first_name: $("#first-name").val(),
     last_name: $("#last-name").val(),
-    address: $("#address").val(),
-    city: $("#city").val(),
-    zip: $("#zip-code").val(),
-    state: $("#state").val(),
-    telephone: $("#phone-number").val(),
-    telephone_other: $("#phone-number-other").val(),
     account_status: true
   };
 
-  console.log(newCustomerAccount);
+  //console.log(newCustomerAccount);
 
 
   const doPost = validate(newCustomerAccount);
   if (doPost) {
     $.post("api/customer", newCustomerAccount, function (customerReturn) {
       if (customerReturn.success) {
-        window.location.href = "/customerShop";
+        // account created
+        $.get("/dashboard")
       } else {
         errorModal(customerReturn.error);
       }
