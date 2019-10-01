@@ -35,11 +35,11 @@ app.set("view engine", "handlebars");
 const PORT = process.env.PORT || 3000;
 
 const apiaAuthRoute = require("./routes/apiAuthRoutes");
-////const apiPostRoutes = require("./routes/apiPostRoutes");
+const apiPostRoutes = require("./routes/apiPostRoutes");
 //const apiProductImages = require("./routes/apiProductImages");
 //const apiGetRoutes = require("./routes/apiGetRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
-//app.use(apiPostRoutes);
+app.use(apiPostRoutes);
 //app.use(apiProductImages);
 //app.use(apiGetRoutes);
 //app.use("./routes/apiPutRoutes");

@@ -1,10 +1,12 @@
 const router = require("express").Router();
-const db = require("../models/users");
-const passport = require("../config/passport");
+const passport = require("passport");
+//require("../config/passport");
 const uuidv4 = require('uuid/v4');
-
+const mongoose = require("mongoose");
+const User = mongoose.model("User");
 
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
+    
     res.json({ success: true, user: req.user.email });
 });
 
@@ -26,9 +28,11 @@ router.post("/api/customer", async (req, res) => {
             account_status: req.body.account_status,
             account_type: "local"
         });
+        console.log(user);
         res.redirect("/api/login");
     } catch (err) {
-        res.json();
+        console.error(err);
+        res.json(err);
     }
 });
 

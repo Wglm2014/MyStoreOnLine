@@ -61,12 +61,12 @@ $("#add").on("click", function (event) {
         account_status: true
     };
 
-    if (password !== $("#password-comprobation").val()) {
+    if (newCustomerAccount.password !== $("#password-comprobation").val()) {
         console.error("do not match");
         errorModal("password confirmation does not match");
     } else {
-
-        $.post("api/customer", newCustomerAccount, function (customerReturn) {
+        console.log(newCustomerAccount);
+        $.post("/api/customer", newCustomerAccount, function (customerReturn) {
             if (customerReturn.success) {
                 $.get("/dashboard", (res) => {
                     //console.log(res);
