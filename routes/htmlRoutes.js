@@ -9,7 +9,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/dashboard", isAuthenticated, (req, res) => {
-    res.render("dashboard", req.user.first_name)
+    //dconsole.log("dashboard");
+    res.render("dashboard", { name: req.user.first_name })
 });
 
 

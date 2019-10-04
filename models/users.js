@@ -1,28 +1,28 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
 
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     googleId: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
-        require: true,
+        unique: true,
+        require: false,
     },
     password: {
         type: String,
-        require: true
+        require: false
     },
     first_name: {
         type: String,
-        require: true
+        require: false
     },
     last_name: {
         type: String,
-        require: true
+        require: false
     },
     foto: {
         type: String,
@@ -30,23 +30,23 @@ const userSchema = new Schema({
     },
     address: {
         type: String,
-        require: true
+        require: false
     },
     city: {
         type: String,
-        require: true
+        require: false
     },
     zip: {
         type: String,
-        require: true,
+        require: false,
     },
     state: {
         type: String,
-        require: true
+        require: false
     },
     telephone: {
         type: String,
-        require: true,
+        require: false,
     },
     telephone_other: {
         type: String,
@@ -65,13 +65,4 @@ const userSchema = new Schema({
 
 
 const User = mongoose.model("User", userSchema);
-
-// Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-User.prototype.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-};
-// Hooks are automatic methods that run during various phases of the User Model lifecycle
-// In this case, before a User is created, we will automatically hash their password
-userSchema.pre("save", function (user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
-});
+module.exports = User;

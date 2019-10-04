@@ -24,15 +24,21 @@ $(".create-account").on("click", function (event) {
 
 //login customer
 
-$("#login-button").on("click", function () {
-    const email = $("#email").val();
-    const password = $("#password").val();
+$("#login-button").on("click", function (event) {
+    event.preventDefault();
+    const email = $("#login-email").val();
+    const password = $("#login-password").val();
     const user = { email, password };
+    console.log("posting");
+    console.log(user);
+
     $.get("/api/login", user, function (userResult) {
-        if (userResult.success) {
-            $("#login-email").val("");
-            $("#login-password").val("");
-            $("Modal-login").modal("hide");
+        console.log(userResult);
+        $("#login-email").val("");
+        $("#login-password").val("");
+        $("#Modal-login").modal("toggle");
+        if (userResult) {
+            // $.get("/dashboard");
         }
         else {
             // call modal error
@@ -46,6 +52,9 @@ $("#login-button").on("click", function () {
 
 $("#add").on("click", function (event) {
     event.preventDefault();
+
+    $("#Modal-create-account").modal("toggle");
+
     const newCustomerAccount = {
         googleId: "",
         email: $("#email").val(),
@@ -60,16 +69,16 @@ $("#add").on("click", function (event) {
         telephone_other: "",
         account_status: true
     };
-
+    //console.log(newCustomerAccount);
     if (newCustomerAccount.password !== $("#password-comprobation").val()) {
-        console.error("do not match");
+        //  console.error("do not match");
         errorModal("password confirmation does not match");
     } else {
-        console.log(newCustomerAccount);
+        //console.log(newCustomerAccount);
         $.post("/api/customer", newCustomerAccount, function (customerReturn) {
             if (customerReturn.success) {
-                $.get("/dashboard", (res) => {
-                    //console.log(res);
+                $.get("/api/login", { email: newCustomerAccount.email, password: newCustomerAccount.password }, (res) => {
+                    console.log(res);
                 });
             } else {
                 errorModal(customerReturn.error);

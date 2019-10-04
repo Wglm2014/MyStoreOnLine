@@ -1,7 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
-
+const bcrypt = require("bcrypt");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
@@ -39,11 +39,11 @@ passport.use(
         try {
           const user = await new User({
             googleId: profile.id,
+            email: profile._json.email,
+            password: "",
             first_name: profile._json.given_name,
             last_name: profile._json.family_name,
             foto: profile._json.picture,
-            email: profile._json.email,
-            account_status: true,
             address: "",
             city: "",
             zip: "",
@@ -72,16 +72,22 @@ passport.use(new LocalStrategy(
     usernameField: "email"
   },
   async (email, password, done) => {
+
     // When a user tries to sign in this code runs
-    const dbUser = User.findOne({ email: email });
+
+    const dbUser = await User.findOne({ email: email });
+    console.log(dbUser);
     // If there's no user with the given email
     if (!dbUser) {
       return done(null, false, {
         message: "Incorrect email."
       });
     }
+    console.log(dbUser.password);
     // If there is a user with the given email, but the password the user gives us is incorrect
-    else if (!dbUser.validPassword(password)) {
+    const isMatch = await bcrypt.compare(password, dbUser.password);
+    console.log(isMatch);
+    if (!isMatch) {
       return done(null, false, {
         message: "Incorrect password."
       });

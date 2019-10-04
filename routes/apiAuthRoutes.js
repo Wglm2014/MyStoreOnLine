@@ -2,6 +2,13 @@
 const router = require("express").Router();
 const passport = require("passport");
 
+router.get("/api/login", passport.authenticate("local"), function (req, res) {
+    // console.log("after post");
+    // console.log(req.user);
+    //res.json({ success: true, msg: "login succes" });
+    res.redirect("/dashboard");
+
+});
 // google auth
 router.get('/auth/google', passport.authenticate('google', {
     scope: ['profile', 'email']

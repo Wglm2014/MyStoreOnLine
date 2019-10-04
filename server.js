@@ -3,14 +3,16 @@ const mongoose = require("mongoose");
 const cookieSession = require('cookie-session');
 const expresshb = require("express-handlebars");
 const passport = require("passport");
+const bodyParser = require("body-parser");
+
 require("dotenv").config();
 
 require("./models/users");
 require("./config/passport");
 //console.log(process.env.mongoURI);
-//const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fnf_db";
-mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-//mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/fnf_db";
+//mongoose.connect(process.env.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const app = express();
@@ -26,6 +28,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 //console.log(process.env.AWS_ACCESS_ID_KEY);
 
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(express.static("public"));
