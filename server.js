@@ -34,8 +34,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+//
+
 app.engine("handlebars", expresshb({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
 const PORT = process.env.PORT || 3000;
 
 const apiaAuthRoute = require("./routes/apiAuthRoutes");

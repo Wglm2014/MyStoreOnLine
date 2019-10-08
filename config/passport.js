@@ -32,12 +32,12 @@ passport.use(
       // console.log(profile);
       //console.log(done);
       try {
-        const existingUser = await User.findOne({ googleId: profile.id });
-        if (existingUser) {
-          return done(null, existingUser);
+        let user = await User.findOne({ googleId: profile.id });
+        if (user) {
+          return done(null, user);
         }
         try {
-          const user = await new User({
+          user = await new User({
             googleId: profile.id,
             email: profile._json.email,
             password: "",
@@ -75,25 +75,26 @@ passport.use(new LocalStrategy(
 
     // When a user tries to sign in this code runs
 
-    const dbUser = await User.findOne({ email: email });
-    console.log(dbUser);
+    const user = await User.findOne({ email: email });
+    console.log("login in");
+    // console.log(user);
     // If there's no user with the given email
-    if (!dbUser) {
+    if (!user) {
       return done(null, false, {
         message: "Incorrect email."
       });
     }
-    console.log(dbUser.password);
+    // console.log(user.password);
     // If there is a user with the given email, but the password the user gives us is incorrect
-    const isMatch = await bcrypt.compare(password, dbUser.password);
-    console.log(isMatch);
+    const isMatch = await bcrypt.compare(password, user.password);
+    // console.log(isMatch);
     if (!isMatch) {
       return done(null, false, {
         message: "Incorrect password."
       });
     }
     // If none of the above, return the user
-    return done(null, dbUser);
+    return done(null, user);
 
   }
 ));

@@ -5,15 +5,16 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 
 router.get("/", (req, res) => {
-    res.render("index")
+    console.log("index");
+    return res.render('index.handlebars')
 });
+
 
 router.get("/dashboard", isAuthenticated, (req, res) => {
-    //dconsole.log("dashboard");
-    res.render("dashboard", { name: req.user.first_name })
+    console.log("dashboard");
+    //console.log(req.user);
+    return res.render('dashboard', { name: req.user.first_name });
 });
-
-
 
 
 /*router.get("/farmer-account", (req, res) => {

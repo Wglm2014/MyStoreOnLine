@@ -30,20 +30,18 @@ $("#login-button").on("click", function (event) {
     const password = $("#login-password").val();
     const user = { email, password };
     console.log("posting");
-    console.log(user);
+    // console.log(user);
 
-    $.get("/api/login", user, function (userResult) {
-        console.log(userResult);
-        $("#login-email").val("");
-        $("#login-password").val("");
-        $("#Modal-login").modal("toggle");
-        if (userResult) {
-            // $.get("/dashboard");
+    $.post("/api/login", user, function (userResult) {
+        console.log(typeof (userResult));
+        if (typeof (userResult) === "object" && !userResult.success) {
+            errorModal(userResult.message);
         }
         else {
-            // call modal error
-            //console.log("user not found");
-            errorModal(userResult.error);
+            $("#login-email").val("");
+            $("#login-password").val("");
+            $("#Modal-login").modal("toggle");
+            window.location.href = "/dashboard"
         }
     });
 });
@@ -53,7 +51,6 @@ $("#login-button").on("click", function (event) {
 $("#add").on("click", function (event) {
     event.preventDefault();
 
-    $("#Modal-create-account").modal("toggle");
 
     const newCustomerAccount = {
         googleId: "",
@@ -76,12 +73,28 @@ $("#add").on("click", function (event) {
     } else {
         //console.log(newCustomerAccount);
         $.post("/api/customer", newCustomerAccount, function (customerReturn) {
+            const data = { email: newCustomerAccount.email, password: newCustomerAccount.password };
             if (customerReturn.success) {
-                $.get("/api/login", { email: newCustomerAccount.email, password: newCustomerAccount.password }, (res) => {
+                $("#email").val("");
+                $("#password").val("");
+                $("#password-comprobation").val("");
+                $("#first-name").val("");
+                $("#last-name").val("");
+                $("#Modal-create-account").modal("toggle");
+                console.log("before login in");
+                console.log(data);
+
+                $.post("/api/login", data, (res) => {
                     console.log(res);
+                    if (typeof (res) === "object" && !res.success) {
+                        errorModal(res.message);
+                    } else {
+                        window.location.href = "/dashboard";
+
+                    }
                 });
             } else {
-                errorModal(customerReturn.error);
+                errorModal(customerReturn.message);
             }
         });
     }

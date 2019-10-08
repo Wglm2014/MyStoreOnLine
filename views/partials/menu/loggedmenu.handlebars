@@ -17,11 +17,13 @@
     </ul>
     <div class="col-1"></div>
 </nav>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script>
     $("#logout-customer").on("click", function (event) {
-    event.preventDefault();
-    $.get("/api/logout",(res)=>{
-        console.log(res);
+        $.get("/api/logout", (res) => {
+            console.log(res);
+            window.location.href = "/";
+        });
     });
-});
 </script>
