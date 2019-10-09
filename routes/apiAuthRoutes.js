@@ -1,7 +1,22 @@
 
 const router = require("express").Router();
-const passport = require("passport");
+const passport = require("../config/passport");
 
+router.post("/api/customer", function (req, res, next) {
+    passport.authenticate("local-signup", function (err, user, info) {
+        if (err) {
+            console.error(err);
+            return next(err);
+        }
+        if (!user) {
+            console.error(info.message);
+            return res.json({ success: false, message: info.message })
+        }
+        console.log(req.user);
+        console.log("before dashboard");
+        res.redirect("/dashboard");
+    })(req, res, next);
+});
 
 router.post("/api/login", function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
@@ -14,6 +29,7 @@ router.post("/api/login", function (req, res, next) {
             return res.json({ success: false, message: info.message })
         }
         console.log(req.user);
+        console.log("before dashboard");
         res.redirect("/dashboard");
     })(req, res, next);
 });
@@ -31,6 +47,11 @@ router.get(
         res.redirect("/dashboard");
     }
 );
+
+router.get("/auth/facebook",
+    passport.authenticate("facebook", {
+        scope: []
+    }))
 
 router.get('/api/logout', (req, res) => {
     req.logOut();

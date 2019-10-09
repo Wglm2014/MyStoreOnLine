@@ -10,16 +10,17 @@ $(document).ready(function () {
 });
 
 // 
-$(".login-customer").on("click", function (event) {
+$("#login-customer-link").on("click", function (event) {
     event.preventDefault();
-    $("#Modal-create-account").modal("hide");
+    console.log("click");
+    //    $("#Modal-create-account").modal("hide");
     $("#Modal-login").modal("toggle");
 });
 
 $(".create-account").on("click", function (event) {
     event.preventDefault();
-    $("#Modal-login").modal("hide");
-    $("#Modal-create-account").modal("toggle");
+    // $("#Modal-login").modal("hide");
+    // $("#Modal-create-account").modal("toggle");
 });
 
 //login customer
@@ -38,10 +39,11 @@ $("#login-button").on("click", function (event) {
             errorModal(userResult.message);
         }
         else {
+            console.log(userResult);
             $("#login-email").val("");
             $("#login-password").val("");
             $("#Modal-login").modal("toggle");
-            window.location.href = "/dashboard"
+            // window.location.href = "/dashboard"
         }
     });
 });
@@ -50,8 +52,6 @@ $("#login-button").on("click", function (event) {
 
 $("#add").on("click", function (event) {
     event.preventDefault();
-
-
     const newCustomerAccount = {
         googleId: "",
         email: $("#email").val(),
@@ -89,6 +89,7 @@ $("#add").on("click", function (event) {
                     if (typeof (res) === "object" && !res.success) {
                         errorModal(res.message);
                     } else {
+                        console.log(res);
                         window.location.href = "/dashboard";
 
                     }
