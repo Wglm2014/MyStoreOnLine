@@ -8,23 +8,10 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 const User = require("../models/users");
 
-passport.serializeUser((user, done) => {
-  console.log("serializing")
-  console.log(user);
-  done(null, user.id);
-});
 
-
-passport.deserializeUser((id, done) => {
-  User.findById(id).then((err, user) => {
-    console.log("desrializing");
-    console.log(user);
-    done(err, user);
-  });
-});
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
-passport.use("google",
+passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.OAUTH_CLIENT_ID,
@@ -40,6 +27,7 @@ passport.use("google",
       try {
         let user = await User.findOne({ googleId: profile.id });
         if (user) {
+          console.log("user found");
           return done(null, user);
         }
         try {
@@ -61,26 +49,30 @@ passport.use("google",
           }).save();
           done(null, user);
         } catch (err) {
+          console.log("catch 1");
           console.log(err);
         }
       }
       catch (err) {
+        console.log("catch 2");
         console.log(err);
       }
 
     }));
 
-passport.use(new FacebookStrategy({
+passport.use("facebook", new FacebookStrategy({
   clientID: process.env.FACEBOOK_APPID,
   clientSecret: process.env.FACEBOOK_SECRET,
-  callbackURL: "/auth/facebook/callback"
+  callbackURL: "/auth/facebook/callback",
+  passReqToCallback: true,
+  profileFields: ["id", "emails", "name"]
 },
-  function (accessToken, refreshToken, profile, done) {
-    console.log(accessToken);
-    console.log(refeshToken);
-    console.log(profile);
-    console.log(done);
-    /*try {
+  async (accessToken, refreshToken, profile, done) => {
+    // console.log(accessToken);
+    // console.log(refeshToken);
+    // console.log(profile);
+    //console.log(done);
+    try {
       let user = await User.findOne({ googleId: profile.id });
       if (user) {
         return done(null, user);
@@ -109,12 +101,10 @@ passport.use(new FacebookStrategy({
     }
     catch (err) {
       console.log(err);
-    }*/
+    }
 
   }
 ));
-
-
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use("local", new LocalStrategy(
@@ -133,6 +123,7 @@ passport.use("local", new LocalStrategy(
       console.log(user);
       // If there's no user with the given email
       if (!user) {
+        console.log("no email");
         return done(null, false, {
           message: "Incorrect email."
         });
@@ -147,8 +138,7 @@ passport.use("local", new LocalStrategy(
         });
       }
       // If none of the above, return the user
-      req.user = user;
-      req.user.save();
+
       done(null, user);
     } catch (err) {
       return done(null, false, { message: `${err.name}: ${err.errmsg}` });
@@ -162,7 +152,7 @@ passport.use("local-signup", new LocalStrategy({ usernameField: "email", passwor
     //console.log(req.body);
     try {
       const user = await User.findOne({ email });
-      console.log("after search for user");
+      // console.log("after search for user");
       //console.log(user);
       if (user) {
         return done(null, false, { message: "Email already being use by other user" });
@@ -195,7 +185,7 @@ passport.use("local-signup", new LocalStrategy({ usernameField: "email", passwor
         return done(null, user);
 
       } catch (err) {
-        console.error(err);
+        // console.error(err);
         done(null, false, { message: `${err.name}: ${err.errmsg}` });
       }
     } catch (err) {
@@ -205,6 +195,25 @@ passport.use("local-signup", new LocalStrategy({ usernameField: "email", passwor
 
 ));
 
+passport.serializeUser((user, done) => {
+  console.log("serializing")
+  console.log(user);
+  done(null, user.id);
+});
 
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    console.log(id);
+    const userFound = await User.findOne({ _id: id });
+    console.log("desrializing");
+    console.log(userFound);
+    done(null, userFound);
+  } catch (err) {
+
+    done(null, false, { message: err });
+  }
+
+});
 
 module.exports = passport;

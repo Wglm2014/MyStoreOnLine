@@ -13,14 +13,21 @@ $(document).ready(function () {
 $("#login-customer-link").on("click", function (event) {
     event.preventDefault();
     console.log("click");
-    //    $("#Modal-create-account").modal("hide");
+    $("#Modal-create-account").modal("hide");
     $("#Modal-login").modal("toggle");
+});
+
+$("#login-request").on("click", function (event) {
+    event.preventDefault();
+    $("#Modal-login").modal("toggle");
+    window.location.href = "/auth/google"
+
 });
 
 $(".create-account").on("click", function (event) {
     event.preventDefault();
-    // $("#Modal-login").modal("hide");
-    // $("#Modal-create-account").modal("toggle");
+    $("#Modal-login").modal("hide");
+    $("#Modal-create-account").modal("toggle");
 });
 
 //login customer
@@ -31,7 +38,7 @@ $("#login-button").on("click", function (event) {
     const password = $("#login-password").val();
     const user = { email, password };
     console.log("posting");
-    // console.log(user);
+    console.log(user);
 
     $.post("/api/login", user, function (userResult) {
         console.log(typeof (userResult));
@@ -39,11 +46,14 @@ $("#login-button").on("click", function (event) {
             errorModal(userResult.message);
         }
         else {
+            console.log("back from post");
             console.log(userResult);
             $("#login-email").val("");
             $("#login-password").val("");
             $("#Modal-login").modal("toggle");
-            // window.location.href = "/dashboard"
+            $.get("/dashboard").then(() => {
+                window.location.href = "/dashboard"
+            });
         }
     });
 });
@@ -72,9 +82,12 @@ $("#add").on("click", function (event) {
         errorModal("password confirmation does not match");
     } else {
         //console.log(newCustomerAccount);
-        $.post("/api/customer", newCustomerAccount, function (customerReturn) {
-            const data = { email: newCustomerAccount.email, password: newCustomerAccount.password };
-            if (customerReturn.success) {
+        $.post("/api/customer", newCustomerAccount, function (userResult) {
+            console.log(typeof (userResult));
+            console.log(userResult);
+            if (typeof (userResult) === "object" && !userResult.success) {
+                errorModal(userResult.message);
+            } else {
                 $("#email").val("");
                 $("#password").val("");
                 $("#password-comprobation").val("");
@@ -82,20 +95,10 @@ $("#add").on("click", function (event) {
                 $("#last-name").val("");
                 $("#Modal-create-account").modal("toggle");
                 console.log("before login in");
-                console.log(data);
-
-                $.post("/api/login", data, (res) => {
-                    console.log(res);
-                    if (typeof (res) === "object" && !res.success) {
-                        errorModal(res.message);
-                    } else {
-                        console.log(res);
-                        window.location.href = "/dashboard";
-
-                    }
+                console.log(userResult);
+                $.get("/dashboard").then(() => {
+                    window.location.href = "/dashboard"
                 });
-            } else {
-                errorModal(customerReturn.message);
             }
         });
     }

@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h1 class="modal-title" id="ModalTitle"><i class="fa fa-user" aria-hidden="true"></i> Login</h1>
+                <h1 class="modal-title" id="ModalTitle"><i class="fa fa-user"></i> Login</h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,10 +15,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <form id="login-form">
-                                    <!--
+
                                     <div class="form-group">
-                                        
-                                        <label for="login-email">Please enter your email</label>
+
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
@@ -26,33 +25,25 @@
                                                 </span>
                                             </div>
                                             <input type="email" class="form-control" id="login-email" name="login-email"
-                                                placeholder="email@domain.com" required>
+                                                placeholder="Please Enter your email@domain.com" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="login-password">Please enter your password</label>
                                         <div class="input-group">
 
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                             </div>
                                             <input type="password" class="form-control" id="login-password"
-                                                name="login-password" placeholder="enter password" required>
+                                                name="login-password" placeholder="Please enter your password" required>
                                         </div>
                                     </div>
                                     <button class="btn btn-success form-control" id="login-button" type="submit">Sign
                                         in here</button>
 
-                                    <p class="text-center"> Or <a class="create-account" href="#">
-                                            Create Account
+                                    <p class="text-center"> <a class="create-account" href="#">
+                                            Or Create Account
                                         </a></p>
-                                        -->
-                                    <a class="btn form-control" href="/auth/google">
-                                        <img src="./assets/images/google-button.png" alt="">
-                                    </a>
-                                    <a class="btn btn-info" href="/auth/facebook">
-                                        SignIn with <i class="fa fa-facebook-square" aria-hidden="true"></i>cebook
-                                    </a>
                                 </form>
                             </div>
                     </main>
@@ -60,7 +51,25 @@
                 </div>
             </div>
             <div class="modal-footer fnf-bg-green">
-                <p>select a method to login</p>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form">
+                            <a class="btn btn-light form-control text-primary border border-primary"
+                                href="/auth/google">
+                                <img src="./assets/images/google-logo-icon.png" class="img-responsive"
+                                    style="max-height: 4vh; max-width:4wh">
+                                Sign In with Google
+                            </a>
+                            <a class="btn btn-light btn-lg form-control text-white mt-2" href="/auth/facebook"
+                                style="background: #4267B2">
+                                <img src="./assets/images/facebook.png" class="img-fluid mb-2"
+                                    style="max-height: 4.5vh; max-width:4.5wh">
+                                Continue with Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

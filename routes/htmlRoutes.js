@@ -11,9 +11,9 @@ router.get("/", (req, res) => {
 
 
 router.get("/dashboard", isAuthenticated, (req, res) => {
-    console.log("dashboard");
-    console.log(req.user);
-    return res.render('dashboard', {});
+    console.log("dashboard 1");
+    //console.log(req.user);
+    res.render('dashboard', { foto: req.user.foto, name: req.user.name });
 });
 
 
