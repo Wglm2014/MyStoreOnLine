@@ -38,12 +38,14 @@
                                                 name="login-password" placeholder="Please enter your password" required>
                                         </div>
                                     </div>
-                                    <button class="btn btn-success form-control" id="login-button" type="submit">Sign
-                                        in here</button>
-
-                                    <p class="text-center"> <a class="create-account" href="#">
-                                            Or Create Account
-                                        </a></p>
+                                    <div class="form-group">
+                                        <button class="btn btn-success form-control" id="login-button"
+                                            type="submit">Sign
+                                            in here</button>
+                                    </div>
+                                    <p class="text-center"> Or <a class="create-account" href="#">
+                                            Create Accounts</a>
+                                    </p>
                                 </form>
                             </div>
                     </main>
@@ -53,20 +55,12 @@
             <div class="modal-footer fnf-bg-green">
                 <div class="row">
                     <div class="col-12">
-                        <div class="form">
-                            <a class="btn btn-light form-control text-primary border border-primary"
-                                href="/auth/google">
-                                <img src="./assets/images/google-logo-icon.png" class="img-responsive"
-                                    style="max-height: 4vh; max-width:4wh">
-                                Sign In with Google
-                            </a>
-                            <a class="btn btn-light btn-lg form-control text-white mt-2" href="/auth/facebook"
-                                style="background: #4267B2">
-                                <img src="./assets/images/facebook.png" class="img-fluid mb-2"
-                                    style="max-height: 4.5vh; max-width:4.5wh">
-                                Continue with Facebook
-                            </a>
-                        </div>
+                        <a class="btn btn-light text-primary border border-primary" href="/auth/google"
+                            style="width:37vw; max-width:100%;">
+                            <img src="./assets/images/google-logo-icon.png" class="img-responsive"
+                                style="max-height: 4vh; max-width:4vw">
+                            Continue with Google
+                        </a>
                     </div>
                 </div>
 

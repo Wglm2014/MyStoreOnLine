@@ -13,7 +13,14 @@ router.get("/", (req, res) => {
 router.get("/dashboard", isAuthenticated, (req, res) => {
     console.log("dashboard 1");
     //console.log(req.user);
-    res.render('dashboard', { foto: req.user.foto, name: req.user.name });
+    const pic = req.user.foto;
+    const foto = pic ? pic : pic.substring(0, 1);
+    res.render('dashboard', { foto: foto, name: req.user.name });
+});
+
+router.get("/customer-account", isAuthenticated, (req, res) => {
+    console.log("got here");
+    res.render("profile", ({ user: req.user }));
 });
 
 

@@ -1,0 +1,33 @@
+{{>menu/loggedmenu}}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mt-3 text-center">Profile Account</h4>
+
+        </div>
+        <div class="card-group">
+            <div class="card">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><button class="btn btn-link  text-dark btn-profile" data="personal-info">
+                            <h4>Personal information</h3>
+                        </button></li>
+                    <li class="nav-item"><button class="btn btn-link  text-dark btn-profile" data="password-info">
+                            <h4>Add or edit local password</h3>
+                        </button></li>
+                    <li class="nav-item"><button class="btn btn-link  text-dark btn-profile" data="payments-info">
+                            <h4>Payment methods</h3>
+                        </button></li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div id="personal-info">
+                    {{>profile/personal}}</div>
+                <div id="password-info" hidden>
+                    {{>profile/password}}</div>
+                <div id="payments-info" hidden>
+                    {{>profile/payments}}</div>
+            </div>
+        </div>
+    </div>
+</div>

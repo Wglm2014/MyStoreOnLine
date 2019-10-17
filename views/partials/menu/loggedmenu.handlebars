@@ -3,12 +3,17 @@
             style="line-height: 55px; height: 55px;"></a>
 
     <ul class="navbar-nav ml-auto">
+        <li class="nav-item"> <span class="text-white mr-2"> <img src={{foto}} class="img-responsive"
+                    style="line-height: 55px; height: 55px;" alt="welcome&nbsp;">
+                {{user.first_name}}</span></li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </a>
+
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/customer-account">Profile</a>
+                <a class="dropdown-item" href="/customer-account">Personal Account</a>
+                <a class="dropdown-item" href="/seller-store">Create your Store</a>
                 <a class="dropdown-item" href="#"></a>
                 <a class="dropdown-item" id="logout-customer" href="#">Logout</a>
             </div>
@@ -17,13 +22,3 @@
     </ul>
     <div class="col-1"></div>
 </nav>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script>
-    $("#logout-customer").on("click", function (event) {
-        $.get("/api/logout", (res) => {
-            console.log(res);
-            window.location.href = "/";
-        });
-    });
-</script>

@@ -13,13 +13,10 @@ router.post("/api/customer", function (req, res, next) {
             return res.json({ success: false, message: info.message })
         }
         req.logIn(user, err => {
-            console.log("req login");
-            console.log(err);
+
             if (err) {
-                console.log(err);
                 return res.json({ success: false, message: err });
             } else {
-                console.log("back from deserialized");
                 res.json({ success: true, message: "Welcome" });
 
             }
@@ -34,25 +31,18 @@ router.post("/api/customer", function (req, res, next) {
 
 router.post("/api/login", function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
-        console.log("user");
-        console.log(user);
+
         if (err) {
-            console.error(err);
             return res.json({ success: false, message: err });
         }
         if (!user) {
-            console.error(info.message);
             return res.json({ success: false, message: info.message })
         }
         req.logIn(user, err => {
-            console.log("req login");
-            console.log(err);
-            console.log(user);
+
             if (err) {
-                console.log(err);
                 return res.json({ success: false, message: err });
             } else {
-                console.log("back from deserialized");
                 res.json({ success: true, message: "loggin success" });
             }
         });
@@ -60,7 +50,6 @@ router.post("/api/login", function (req, res, next) {
     })(req, res, next);
 });
 
-// google auth
 // google auth
 router.get('/auth/google', passport.authenticate('google', {
     scope: ['profile', 'email']
@@ -74,13 +63,6 @@ router.get(
         res.redirect("/dashboard");
     }
 );
-
-router.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }))
-
-router.get("auth/facebook/callback",
-    passport.authenticate("facebook"), (req, res) => {
-        res.redirect("/dashboard");
-    });
 
 router.get('/api/logout', (req, res) => {
     req.logOut();

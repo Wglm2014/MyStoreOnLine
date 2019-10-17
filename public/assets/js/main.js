@@ -10,7 +10,7 @@ $(document).ready(function () {
 });
 
 // 
-$("#login-customer-link").on("click", function (event) {
+$(".login-customer-link").on("click", function (event) {
     event.preventDefault();
     console.log("click");
     $("#Modal-create-account").modal("hide");
