@@ -3,18 +3,20 @@
         <h4 class="text-center">Edit your account</h4>
         <form>
             <!--form group-->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            <div class="form-row">
+                <div class="form-group col-md-6 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input id="first-name" name="" class="form-control" value={{user.first_name}} type="text" />
                 </div>
-                <input id="first-name" name="" class="form-control" value={{user.first_name}} type="text" />
-            </div>
-            <!--form group-->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                <!--form group-->
+                <div class="form-group col-md-6  input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input id="last-name" name="" class="form-control" value={{user.last_name}} type="text" />
                 </div>
-                <input id="last-name" name="" class="form-control" value={{user.last_name}} type="text" />
             </div>
             <!--form group-->
             <div class="form-group input-group">
@@ -27,22 +29,24 @@
             </div>
 
             <!--form group-->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="fa fa-phone"></i>
-                    </span>
+            <div class="form-row">
+                <div class="form-group col-md-6 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                    </div>
+                    <input id="phone-number" name="" class="form-control" placeholder="Phone number" type="text" />
                 </div>
-                <input id="phone-number" name="" class="form-control" placeholder="Phone number" type="text" />
-            </div>
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="fa fa-phone"></i>
-                    </span>
+                <div class="form-group col-md-6 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                    </div>
+                    <input id="phone-number-other" name="" class="form-control" placeholder="Second Phone number"
+                        type="text" />
                 </div>
-                <input id="phone-number-other" name="" class="form-control" placeholder="Second Phone number"
-                    type="text" />
             </div>
             <!--form group-->
             <div class="form-group input-group">
@@ -53,32 +57,35 @@
                 </div>
                 <input id="address" name="" class="form-control" placeholder="Address" type="text" />
             </div>
-            <!--form group-->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </span>
+            <div class="form-row">
+                <!--form group-->
+                <div class="form-group col-md-6 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map-marker-alt"></i></span>
+                    </div>
+                    <input id="city" cityname="" class="form-control" placeholder="City" type="text" />
                 </div>
-                <input id="zip-code" name="" class="form-control" placeholder="Zip code" type="text" />
-            </div>
-            <!--form group-->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="fas fa-map-marker-alt"></i></span>
+                <!--form group-->
+                <div class="form-group col-md-3 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
+                    </div>
+                    <input id="state" name="" class="form-control" placeholder="State" type="text" />
                 </div>
-                <input id="city" cityname="" class="form-control" placeholder="City" type="text" />
-            </div>
-            <!--form group-->
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </span>
+                <!--form group-->
+                <div class="form-group col-md-3 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
+                    </div>
+                    <input id="zip-code" name="" class="form-control" placeholder="Zip code" type="text" />
                 </div>
-                <input id="state" name="" class="form-control" placeholder="State" type="text" />
             </div>
+
             <!--form group-->
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-block" id="add">
