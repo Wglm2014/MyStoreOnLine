@@ -9,6 +9,7 @@ $(document).ready(function () {
 
 });
 
+
 // 
 $(".login-customer-link").on("click", function (event) {
     event.preventDefault();
@@ -76,12 +77,9 @@ $("#add").on("click", function (event) {
         telephone_other: "",
         account_status: true
     };
-    //console.log(newCustomerAccount);
     if (newCustomerAccount.password !== $("#password-comprobation").val()) {
-        //  console.error("do not match");
         errorModal("password confirmation does not match");
     } else {
-        //console.log(newCustomerAccount);
         $.post("/api/customer", newCustomerAccount, function (userResult) {
             console.log(typeof (userResult));
             console.log(userResult);

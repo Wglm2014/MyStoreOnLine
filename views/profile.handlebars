@@ -1,12 +1,12 @@
 {{>menu/loggedmenu}}
 <div class="container mt-5">
     <div class="card">
-        <div class="card-header">
-            <h4 class="card-title mt-3 text-center">Profile Account</h4>
+        <div class="card-header bg-dark">
+            <h4 class="card-title mt-3 text-center text-white">Profile Account</h4>
 
         </div>
         <div class="card-group">
-            <div class="card">
+            <div class="card fnf-bg-green " style="flex-grow:0.5;">
                 <ul class="nav flex-column">
                     <li class="nav-item"><button class="btn btn-link  text-dark btn-profile" data="personal-info">
                             <h4>Personal information</h3>
@@ -17,16 +17,23 @@
                     <li class="nav-item"><button class="btn btn-link  text-dark btn-profile" data="payments-info">
                             <h4>Payment methods</h3>
                         </button></li>
+                    <li class="nav-item"><button class="btn btn-link  text-dark btn-profile" data="store-info">
+                            <a href="/dashboard">Back to stores</a>
+                        </button></li>
                 </ul>
             </div>
 
             <div class="card">
                 <div id="personal-info">
-                    {{>profile/personal}}</div>
+                    {{>profile/personal}}
+                </div>
                 <div id="password-info" hidden>
-                    {{>profile/password}}</div>
+                    {{>profile/password}}
+                </div>
                 <div id="payments-info" hidden>
-                    {{>profile/payments}}</div>
+                    {{>profile/payments}}
+                </div>
+
             </div>
         </div>
     </div>

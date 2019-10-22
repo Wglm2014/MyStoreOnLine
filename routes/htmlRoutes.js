@@ -1,43 +1,33 @@
 
 const router = require("express").Router();
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
-
+const dc = require("../dataControllers/stores.js");
 
 router.get("/", (req, res) => {
-    //console.log("index");
     return res.render('index.handlebars')
 });
 
-
 router.get("/dashboard", isAuthenticated, (req, res) => {
-    console.log("dashboard 1");
-    //console.log(req.user);
-    const pic = req.user.foto;
-    const foto = pic ? pic : pic.substring(0, 1);
-    res.render('dashboard', { foto: foto, name: req.user.name });
+    const pic = req.user.first_name;
+    const foto = req.user.foto ? req.user.foto : pic.substring(0, 1);
+    const user = { foto: foto, name: req.user.name }
+    res.render('dashboard', user);
 });
 
 router.get("/customer-account", isAuthenticated, (req, res) => {
-    console.log("got here");
     res.render("profile", ({ user: req.user }));
 });
 
+router.get("/seller-store", isAuthenticated, (req, res) => {
+    console.log(typeof (dc.getStores));
+    const storeData = dc.getStores(req.user._id);
+    res.render("store", ({ storeData }));
 
-/*router.get("/farmer-account", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/farmerRegister.html"));
-});
-router.get("/shopper-account", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/shopperRegister.html"));
-});
-router.get("/customer-account", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/customerRegister.html"));
 });
 
-router.get("/farmer-product", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/addProduct.html"));
+router.get("/store-product", (req, res) => {
+
+    res.render("products");
 });
-router.get("/customerShop", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/customerShop.html"));
-});*/
+
 module.exports = router;

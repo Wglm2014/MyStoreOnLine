@@ -24,8 +24,8 @@ const farmerSchema = mongoose.Schema({
     open_close: {
         type: Boolean,
         default: true
-    }
-
+    },
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
 });
 
 const Farmer = mongoose.model("Farmer", farmerSchema);

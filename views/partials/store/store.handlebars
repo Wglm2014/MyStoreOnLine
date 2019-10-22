@@ -1,31 +1,44 @@
 <div class="row p-2">
     <div class="col-12">
-        <h4 class="text-center">Edit your account</h4>
+        <p class="text-center">Get started with your store account</p>
         <form>
             <!--form group-->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                    </span>
                 </div>
-                <input id="first-name" name="" class="form-control" value={{user.first_name}} type="text" />
+                <input id="name" name="" class="form-control" placeholder="Full Name/Bussiness Name" type="text" />
             </div>
-            <!--form group-->
+
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    <span class="input-group-text">
+                        <i class="fas fa-carrot"></i>
+                    </span>
                 </div>
-                <input id="last-name" name="" class="form-control" value={{user.last_name}} type="text" />
+                <select class="form-control" id="category">
+                    <option value="">
+                        Category of the products tha will provide</option>
+                    <option value="Fresh Fruits and Vegetables">Fresh Fruits and Vegetables</option>
+                    <option value="Fresh Animal Products">Fresh Animal Products</option>
+                    <option value="Preserved or Durable Produce">Preserved or Durable Produce</option>
+                    <option value="Prepare Foods">Prepare Foods</option>
+                    <option value="Inedible Products">Inedible Products</option>
+                    <option value="Homemade Food Products">Homemade Food Products</option>
+                </select>
             </div>
             <!--form group-->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">
-                        <i class="fa fa-envelope"></i>
+                        <i class="fa fa-adn"></i>
                     </span>
                 </div>
-                <input id="email" name="" class="form-control" value={{user.email}} type="email" disabled />
+                <textarea id="brand" name="" class="form-control" placeholder="Bussines Ad" type="text"
+                    rows="3"></textarea>
             </div>
-
             <!--form group-->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
@@ -34,15 +47,6 @@
                     </span>
                 </div>
                 <input id="phone-number" name="" class="form-control" placeholder="Phone number" type="text" />
-            </div>
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <i class="fa fa-phone"></i>
-                    </span>
-                </div>
-                <input id="phone-number-other" name="" class="form-control" placeholder="Second Phone number"
-                    type="text" />
             </div>
             <!--form group-->
             <div class="form-group input-group">
@@ -68,7 +72,7 @@
                     <span class="input-group-text">
                         <i class="fas fa-map-marker-alt"></i></span>
                 </div>
-                <input id="city" cityname="" class="form-control" placeholder="City" type="text" />
+                <input id="city" name="" class="form-control" placeholder="City" type="text" />
             </div>
             <!--form group-->
             <div class="form-group input-group">
@@ -87,5 +91,4 @@
             </div>
         </form>
     </div>
-
 </div>

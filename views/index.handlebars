@@ -8,14 +8,14 @@
             <p id="main-title">Fast & Fresh</p>
             <p id="title-2">from the farm to your table</p>
         </div>
-        <div class="info-section row mx-auto">
+        <div class="card-group info-section mx-auto">
             <div class="flip-card">
                 <div class="card flip-card-inner">
-                    <div class="card-body flip-card-front row" id="info-1">
-                        <h3 class="col-12">set your stall</h3>
+                    <div class="card-body flip-card-front" id="info-1">
+                        <h3>set your stall</h3>
                     </div>
                     <div class="card-body flip-card-back">
-                        <h4>
+                        <h4 class="card-text">
                             If your are a local producer or goods like produce, diary, crafts, or delicious homemade
                             food
                             and
@@ -29,9 +29,15 @@
             </div>
             <div class="flip-card">
                 <div class="card flip-card-inner">
-                    <div class="card-body flip-card-front row" id="info-2">
-                        <h3 class="col-12">Create Your Account</h3>
-                        <h3 class="col-12"> Become a Shopper Fill baskets for pick up</h3>
+                    <div class="card-body flip-card-front" id="info-2">
+                        <ul type="none">
+                            <li>
+                                <h3>Create Your Account</h3>
+                            </li>
+                            <li>
+                                <h3> Become a Shopper fill baskets for pick up</h3>
+                            </li>
+                        </ul>
                     </div>
                     <div class="card-body flip-card-back">
                         <h4>
@@ -46,11 +52,19 @@
             </div>
             <div class="flip-card">
                 <div class="card flip-card-inner">
-                    <div class="card-body flip-card-front row" id="info-3">
-                        <h3 class="col-12">SignUp</h3>
-                        <h3 class="col-12">Shop Fresh</h3>
-                        <h3 class="col-12">Local Products</h3>
+                    <div class="card-body flip-card-front" id="info-3">
+                        <ul type="none">
+                            <li>
+                                <h3>SignUp</h3>
+                            </li>
+                            <li>
+                                <h3>Shop Fresh</h3>
+                            </li>
 
+                            <li>
+                                <h3>Local Products</h3>
+                            </li>
+                        </ul>
                     </div>
                     <div class="card-body flip-card-back">
                         <h4>
@@ -67,6 +81,5 @@
     </section>
     <!--modal for loggin-->
     {{>login/loggin}}
-    <!--modal for create account
-    {{>register/register}}-->
+
 </section>
