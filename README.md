@@ -3,7 +3,7 @@ Is the migration of Fast And Fresh client user interface from HTML, Javascript a
 
 ## Getting Started
 * Before starting with you need to install Nodejs and have basic understanding of it and npm (node package manager) this is the official line for the documentation [Nodejs Docs](https://nodejs.org/en/docs/), also know how to clone repositories from Github to your local machine [Git Reference](https://www.git-scm.com/docs). 
-* 
+* You need to install MongoDb and Mongo Compas, you can find all the necesary information at [MongoDb Documentation](https://docs.mongodb.com/)
 
 ## Installing and Starting the app locally
 
